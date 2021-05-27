@@ -114,6 +114,7 @@ body {
 
 a,
 a:visited {
+  color: var(--clr-light);
   text-decoration: none;
 }
 
@@ -295,9 +296,6 @@ header {
 .logo .name {
   color: var(--clr-primary);
 }
-.logo a:visited {
-  color: var(--clr-light);
-}
 .logo:hover {
   opacity: 0.85;
 }
@@ -333,7 +331,7 @@ header {
 
 .nav__link {
   color: inherit;
-  font-size: var(--fs-h2);
+  font-size: var(--fs-h3);
   font-weight: var(--fw-bold);
   text-decoration: none;
   transition: color 0.2s ease;
@@ -341,6 +339,12 @@ header {
 
 .nav__link:hover {
   color: var(--clr-primary);
+}
+
+@media (min-width: 600px) {
+  .nav__link {
+    font-size: var(--fs-h2);
+  }
 }
 
 /* ----- Hamburger Button ----- */
@@ -471,9 +475,10 @@ header {
   box-shadow: var(--bs);
 }
 
-.intro__cta:visited {
+/* ANCHOR */
+/* .intro__cta:visited {
   color: var(--clr-light);
-}
+} */
 
 .intro__cta:hover {
   background: rgba(0, 0, 0, 0.75);
@@ -901,6 +906,7 @@ header {
   outline: none;
   /* outline-offset: -6px; */
   transition: 0.15s;
+  color: var(--clr-light);
 }
 
 .project__link:visited {
@@ -920,13 +926,12 @@ header {
 }
 
 .project__link--demo {
-  background: rgba(0, 0, 0, 0.5);
+  /* background: rgba(0, 0, 0, 0.5); */
   background: var(--clr-secondary);
 }
 
 .project__link--code {
   background: var(--clr-primary);
-  /* color: var(--clr-light); */
 }
 
 /* --- Laptop + --- */
@@ -1058,9 +1063,6 @@ header {
   font-size: 2.1rem;
   text-align: center;
   padding: 5rem 0;
-}
-
-.footer a:visited {
   color: var(--clr-primary);
 }
 
@@ -1096,6 +1098,9 @@ header {
 .social-list__item {
   color: var(--clr-primary);
   /* transition: 0.15s; */
+}
+.social-list__item a:visited {
+  color: var(--clr-primary);
 }
 
 .footer__mail-to-link:hover,
