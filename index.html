@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bilaal Ahmad | Portfolio</title>
+
+    <!-- Normalize.css -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" /> -->
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/9066cccb20.js" crossorigin="anonymous"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;900&family=Source+Sans+Pro:wght@300;900&display=swap" rel="stylesheet"> -->
+
+    <!-- Font: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,700&display=swap"
+        rel="stylesheet">
+    <!-- Font: Permanent Marker -->
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="#home">
+                <code>
+                    &lt;<span class="name">B.A. </span>| Portfolio /&gt;
+                </code>
+            </a>
+        </div>
+
+        <button class="nav-toggle" aria-label="toggle-navigation">
+                <span class="hamburger"></span>
+        </button>
+
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav_item">
+                    <a href="#home" class="nav__link">
+                        <i class="fas fa-home"></i>&nbsp; Home
+                    </a>
+                </li>
+                <li class="nav_item">
+                    <a href="#about" class="nav__link">
+                        <i class="fas fa-address-card"></i>&nbsp; About Me
+                    </a>
+                </li>
+                <li class="nav_item">
+                    <a href="#work" class="nav__link">
+                        <i class="fas fa-briefcase"></i>&nbsp; My Work
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-wrapper">
+        <!-- Intro -->
+        <section class="intro" id="home">
+            <h1 class="section__title section__title--intro">
+                <span class="intro__greeting">Hi, I'm</span>
+                <strong>Bilaal</strong>
+            </h1>
+            <p class="section__subtitle section__subtitle--intro">A Frontend Developer</p>
+            <!-- <img src="assets/river-selfie.jpg" alt="portrait of John Doe" class="intro__img"> -->
+
+            <!-- <div class="intro__buttons"> -->
+                <a href="assets/cv.pdf" target="_blank" class="btn btn--pill intro__cta">
+                    <i class="fas fa-arrow-circle-right"></i> View My CV
+                </a>
+                <!-- <a href="#work" class="btn btn--primary"><i class="fas fa-briefcase"></i> My Work</a> -->
+            <!-- </div> -->
+
+            <img src="/assets//portfolio-pic.jpg" alt="portrait of Bilaal Ahmad" class="intro__img">
+
+            <!-- PLACEHOLDER IMG -->
+            <!-- <img src="https://images.unsplash.com/photo-1497551060073-4c5ab6435f12?ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MjB8MjM0NjM0OXx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60" alt="portrait of John Doe" class="intro__img"> -->
+
+            <a href="#about" class="section__scroll-link"><i class="fas fa-chevron-down"></i></a>
+        </section>
+        
+        <!-- About Me -->
+        <section class="about-me" id="about">
+            <div class="about-me--container">
+                <h2 class="section__title section__title--about">About Me</h2>
+
+                <!-- <p class="section__subtitle section__subtitle--about">Web Developer based in Manchester</p> -->
+            
+                <div class="about-me__body">
+                    <!-- Accordion -->
+                    <div class="accordion">
+                        <!-- Set 1 -->
+                        <button class="accordion__button accordion__button--active">What I Do</button>
+                        <div class="accordion__content">
+                            <p>I am a <span class="highlight-text">self-taught</span> Web Developer based in Manchester, looking to break into the industry and develop my skills. My
+                            current knowledge favours (but is not limited to) frontend development; encompassing HTML, CSS, JavaScript, React, Redux
+                            & Styled Components.</p>
+                            <p>I earned a Bachelors of Science in IT at Sheffield Hallam University, where I was first introduced to fundamental
+                            concepts in programming & software development.</p>
+                            <p>I don't skimp on theory BUT I think programming is best learned through practically applying concepts. Most of what I
+                            know comes from many hours of my own research & experimentation, as well as online *project-based* courses & tutorials.
+                            Ultimately, I believe this hands-on approach has helped me to adopt a mindset for growth and gives me confidence in my
+                            abilities.</p>
+                        </div>
+
+                        <!-- Set 2 -->
+                        <button class="accordion__button">Passion - Logical Creations / Logically Creative</button>
+                        <div class="accordion__content">
+                            <p>Determining how users will interact with a website/web app has spiked my interest in UI/UX design. The core of my
+                            passion for Web Development lies in the freedom it provides to exercise creativity alongside analytical thinking, two
+                            things that aren't often synonymous in other professions. For me, it's this juxtaposition and multifaceted nature of web
+                            development that maintains my interest - there is never a dull moment and always something to learn.</p>
+                        </div>
+
+                        <!-- Set 3 -->
+                        <button class="accordion__button">Team Player - Count Me In</button>
+                        <div class="accordion__content">
+                            <p>Discord is a popular online social platform with many programming communities; I will often turn to such channels when
+                            in need of help. When possible, I like to give back by working with others to solve their problems. This has taught me
+                            the value of teamwork, and is why I look forward to working with a team regularly (and with like-minded people in
+                            general).</p>
+                        </div>
+
+                        <!-- Set 4 -->
+                        <button class="accordion__button">What's next for me</button>
+                        <div class="accordion__content">
+                            <p>At the moment, I am job-seeking and my main goal is to apply & level-up my frontend skills in real-world projects
+                            (whether it be JS, React or CSS). When the opportunity presents itself (in the workplace or in my own time), I aim to:    
+                            </p>
+                            <ul>
+                                <li>strengthen my understanding of the backend and available tools (e.g. Node.js, PostgreSQL or MongoDB)</li>
+                                <li>expand my skillset to include a statically typed language (like TypeScript or C#)</li>
+                            </ul>
+                        </div>
+
+                        <!-- Set 5 -->
+                        <button class="accordion__button">Personal Interests</button>
+                        <div class="accordion__content">
+                            <p>
+                                When I'm not coding, I'm:
+                            </p>
+                            <ul>
+                                <li>Playing guitar</li>
+                                <li>Reading - Fiction, Biographies, Productivity</li>
+                                <li>Running, skipping or weight training</li>
+                                <li>Keeping up with Science & Tech - from Software Development, Computer Hardware and Gaming, to Psychology,
+                                    Robotics, Astronomy & Space Travel</li>
+                            </ul>
+                        </div>
+                
+                    </div>
+                </div>
+                
+                <!-- PLACEHOLDER IMG -->
+                <!-- <img src="https://images.unsplash.com/photo-1492446845049-9c50cc313f00?ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8N3wyMzQ2MzQ5fHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="about-me__img"> -->
+            </div>
+
+            <a href="#work" class="section__scroll-link"><i class="fas fa-chevron-down"></i></a>
+        </section>
+
+        <!-- My Work -->
+        <section class="my-work" id="work">
+            <h2 class="section__title section__title--work">My Work</h2>
+            <!-- <p class="section__subtitle section__subtitle--work"> Projects I've been working on...</p> -->
+            <p class="section__subtitle section__subtitle--work">For extensive project details, please refer to the project's README.md file&nbsp; :)</p>
+
+            <!-- Portfolio -->
+            <div class="portfolio">
+
+                <!-- Project #1 -->
+                <div class="project">
+                    <!-- Image -->
+                    <div class="project__identity">
+                        <h3 class="project__name">Crown Clothing</h3>    
+                        <img src="assets/crwn-clothing-desktop.PNG" class="project__img" alt="Screenshot of Crown Clothing project">
+                    </div>
+
+                    <!-- Info -->
+                    <div class="project__info">
+                        <div class="project__toolbox">
+                            <i class="fab fa-react tool-icon"></i>
+
+                            <img src="./assets/icons/firebase.svg" class="tool-icon" alt="Firebase Logo">
+
+                            <i class="fab fa-node-js tool-icon"></i>
+                        </div>
+
+                        <div class="project__summary">
+                            <p>An e-commerce web application. Made with React, Redux, Firebase & Node.js</p>
+                            <p><strong>Please give this one 10-30 seconds to load</strong> due to free web hosting</p>
+                        </div>
+
+                        <div class="project__links-container">
+                            <a class="project__link project__link--readme" href="https://github.com/Bilaal96/crwn-clothing/blob/master/README.md" target="_blank">
+                                <i class="fas fa-info-circle"></i> Project README.md
+                            </a>
+                            <a class="project__link project__link--demo" href="http://crown-clothing-live-app.herokuapp.com/" target="_blank">
+                                <i class="fas fa-external-link-square-alt"></i> Demo
+                            </a>
+                            <a class="project__link project__link--code" href="https://github.com/Bilaal96/crwn-clothing" target="_blank">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project #2 -->
+                <div class="project">
+                    <!-- Image -->
+                    <div class="project__identity">
+                        <h3 class="project__name">Novaflora</h3>
+
+                        <img src="https://images.unsplash.com/photo-1531058240690-006c446962d8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" class="project__img project__img--border-light" alt="Screenshot of Florist">
+                    </div>
+
+                    <!-- Info -->
+                    <div class="project__info">
+                        <div class="project__toolbox">
+                            <i class="fab fa-html5 tool-icon"></i>
+                            <i class="fab fa-sass tool-icon"></i>
+                            <i class="fab fa-js tool-icon"></i>                        
+                        </div>
+
+                        <div class="project__summary">
+                            <p>A landing page for a fictional Florist company. Made with HTML, SASS, JS</p>
+                        </div>
+
+                        <div class="project__links-container">
+                            <a class="project__link project__link--readme"
+                                href="https://github.com/Bilaal96/crwn-clothing/blob/master/README.md" target="_blank">
+                                <i class="fas fa-info-circle"></i> Project README.md
+                            </a>
+                            <a class="project__link project__link--demo" href="http://crown-clothing-live-app.herokuapp.com/" target="_blank">
+                                <i class="fas fa-external-link-square-alt"></i> Demo
+                            </a>
+                            <a class="project__link project__link--code" href="https://github.com/Bilaal96/crwn-clothing" target="_blank">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- /project -->
+
+            <a href="#home" class="section__scroll-link">
+                <i class="fas fa-chevron-up"></i>
+            </a>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <a href="mailto:bilaal-ahmad@hotmail.co.uk" class="footer__mail-to-link"><i class="fas fa-envelope"></i><span class="email">bilaal-ahmad@hotmail.co.uk</span></a>
+            <ul class="social-list">
+                <li class="social-list__item">
+                    <a href="https://uk.linkedin.com/in/bilaal-ahmad-4a43aa103" target="_blank" class="social-list__link"><i class="fab fa-linkedin"></i></a>
+                </li>
+
+                <li class="social-list__item">
+                    <a href="https://github.com/Bilaal96" target="_blank" class="social-list__link"><i class="fab fa-github"></i></a>
+                </li>
+
+                <!-- <li class="social-list__item">
+                    <a href="http://codepen.io" class="social-list__link"><i class="fab fa-codepen"></i></a>
+                </li>
+                
+                <li class="social-list__item">
+                    <a href="http://twitter.com" class="social-list__link"><i class="fab fa-twitter"></i></a>
+                </li> -->
+            </ul>
+        </footer>
+    </div >
+
+    <script src="/js/index.js"></script>
+</body>
+</html>
