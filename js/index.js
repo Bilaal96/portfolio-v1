@@ -39,6 +39,10 @@ const toggleAccordionContent = (e) => {
     .forEach((button) => {
       button.classList.remove(activeClassName);
     });
+
+  // FIXME - Scroll to top of ACTIVE accordionButton
+  // offset scroll position, taking header with "position: fixed" into account
+  // const offset = "70px";
 };
 
 // Event Listeners

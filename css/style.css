@@ -122,6 +122,7 @@ a:visited {
 }
 
 section {
+  position: relative;
   padding: 8rem 2rem 10rem;
 }
 
@@ -193,7 +194,18 @@ strong {
   overflow: hidden;
 }
 
-/* REVIEW - container - needed?*/
+/* For use with "position: fixed" header - Offsets destination of anchor-link */
+/* NOTE: other solutions caused issues with .intro -> as it has "display: grid" */
+.anchor {
+  /* display: block; */
+  position: absolute;
+  height: var(--header-height);
+  top: calc(var(--header-height) * -1);
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* REVIEW - container - needed? */
 .container {
   max-width: 1000px;
   margin: 0 auto;
