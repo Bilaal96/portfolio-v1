@@ -41,8 +41,22 @@ const toggleAccordionContent = (e) => {
     });
 
   // FIXME - Scroll to top of ACTIVE accordionButton
-  // offset scroll position, taking header with "position: fixed" into account
-  // const offset = "70px";
+  if (window.matchMedia('(max-width: 768px)').matches) {
+    // offset scroll position, taking header with "position: fixed" into account
+    //   const offset = "70px";
+    const offset = document.querySelector('header').scrollHeight + 20;
+
+    const bodyRect = document.body.getBoundingClientRect();
+    const toggledButtonRect = toggledButton.getBoundingClientRect();
+    //   console.log({ left: toggledButtonRect.left, top: toggledButtonRect.top });
+    const scrollPosition = toggledButtonRect.top - bodyRect.top - offset;
+
+    window.scrollTo({
+      top: scrollPosition,
+      left: 0,
+      behavior: 'smooth',
+    });
+  }
 };
 
 // Event Listeners
