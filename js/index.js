@@ -2,7 +2,25 @@ const navToggle = document.querySelector('.nav-toggle');
 const navLinks = document.querySelectorAll('.nav__link');
 const accordionButtons = document.querySelectorAll('.accordion__button');
 
+// Tracks previous scroll position - value is set by hideHeader()
+let prevScrollPos = window.pageYOffset;
+
 // Event handlers
+const hideHeaderOnScrollDown = () => {
+  const currentScrollPos = window.pageYOffset;
+  const header = document.querySelector('header');
+
+  if (prevScrollPos > currentScrollPos) {
+    // Reveal on scroll up
+    header.style.top = 0;
+  } else {
+    // Hide on scroll down
+    header.style.top = header.offsetHeight * -1 + 'px';
+  }
+
+  prevScrollPos = currentScrollPos;
+};
+
 const toggleNav = () =>
   ['nav-open', 'prevent-scroll'].forEach((htmlClass) =>
     document.body.classList.toggle(htmlClass)
@@ -68,6 +86,9 @@ const toggleAccordionContent = (e) => {
 };
 
 // Event Listeners
+// -- Hide Header on scroll down, show on scroll up
+window.addEventListener('scroll', hideHeaderOnScrollDown);
+
 // -- Mobile responsive nav
 navToggle.addEventListener('click', toggleNav);
 navLinks.forEach((link) => link.addEventListener('click', closeNav));
