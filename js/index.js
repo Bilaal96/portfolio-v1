@@ -89,15 +89,8 @@ const toggleAccordionContent = (e) => {
 };
 
 // Event Listeners
-// -- On mobile devices => hide Header on scroll down, show on scroll up
-setInterval(() => {
-  if (window.matchMedia('(max-width: 768px)').matches) {
-    window.addEventListener('scroll', hideHeaderOnScrollDown);
-  } else {
-    window.removeEventListener('scroll', hideHeaderOnScrollDown);
-    document.querySelector('header').style.top = 0;
-  }
-}, 1000);
+// -- Hide Header on scroll down, show on scroll up
+window.addEventListener('scroll', hideHeaderOnScrollDown);
 
 // -- Responsive side nav
 navToggle.addEventListener('click', toggleNav);
