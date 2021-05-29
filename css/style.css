@@ -197,7 +197,6 @@ strong {
 /* For use with "position: fixed" header - Offsets destination of anchor-link */
 /* NOTE: other solutions caused issues with .intro -> as it has "display: grid" */
 .anchor {
-  /* display: block; */
   position: absolute;
   height: var(--header-height);
   top: calc(var(--header-height) * -1);
@@ -293,22 +292,37 @@ a.btn {
 /* -------------------------------------------------------------------------- */
 header {
   position: fixed;
-  height: var(--header-height);
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: var(--clr-black);
   color: var(--clr-light);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: var(--p-3);
-  z-index: 10000;
+  z-index: 20000;
+}
+
+/* Pseudo-header - recreates header styles when nav is open */
+/* Solves visual scroll issue on Firefox mobile browser */
+.nav::before {
+  content: '';
+  position: absolute;
+}
+
+header,
+.nav::before {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  background-color: var(--clr-black);
   border-bottom: 2px solid var(--clr-light);
 }
 
 /* ---------------------------------- Logo ---------------------------------- */
+.logo {
+  z-index: 1; /* visible when .nav is open */
+}
 .logo .name {
+  font-weight: var(--fw-bold);
   color: var(--clr-primary);
 }
 .logo:hover {
@@ -318,21 +332,17 @@ header {
 /* ----------------------------- Navigation Menu ---------------------------- */
 .nav {
   position: fixed;
-  top: var(--header-height);
+  top: 0;
   right: 0;
-  bottom: 0;
   left: 0;
-  color: var(--clr-light);
-  letter-spacing: 0.2rem;
+  height: 100vh;
+  padding-top: var(--header-height); /* offset */
   background-color: var(--clr-black);
   opacity: 0.9;
-  z-index: 10000;
+  color: var(--clr-light);
+  letter-spacing: 0.2rem;
   transform: translateX(100%);
   transition: transform 0.25s cubic-bezier(0.5, 0, 0.5, 1);
-
-  /* REVIEW - nav styles - needed? */
-  /* text-transform: uppercase; */
-  /* transform: translateX(0%); */
 }
 
 .nav__list {
