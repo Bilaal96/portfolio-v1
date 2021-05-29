@@ -10,12 +10,14 @@ const hideHeaderOnScrollDown = () => {
   const currentScrollPos = window.pageYOffset;
   const header = document.querySelector('header');
 
-  if (prevScrollPos > currentScrollPos) {
-    // Reveal on scroll up
-    header.style.top = 0;
-  } else {
-    // Hide on scroll down
-    header.style.top = header.offsetHeight * -1 + 'px';
+  if (!document.body.classList.contains('.nav-open')) {
+    if (prevScrollPos > currentScrollPos) {
+      // Reveal on scroll up
+      header.style.top = 0;
+    } else {
+      // Hide on scroll down
+      header.style.top = header.offsetHeight * -1 + 'px';
+    }
   }
 
   prevScrollPos = currentScrollPos;
