@@ -11,13 +11,13 @@ const hideHeaderOnScrollDown = () => {
   const header = document.querySelector('header');
 
   if (prevScrollPos > currentScrollPos) {
-    // Reveal on scroll up
+    // Reveal header on scroll up
     header.style.top = 0;
   } else {
     // Prevent header scroll if side navigation is open
     if (document.body.classList.contains('nav-open')) return;
 
-    // Hide on scroll down
+    // Hide header on scroll down
     header.style.top = header.offsetHeight * -1 + 'px';
   }
 
