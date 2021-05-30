@@ -75,10 +75,9 @@
   --fs-body: 1.8rem;
 
   /* --- Font Family --- */
-  /* --ff-primary: 'Source Sans Pro', sans-serif; */
   --ff-primary: 'Poppins', sans-serif;
   --ff-secondary: 'Source Code Pro', monospace;
-  --ff-section-title: 'Permanent Marker', sans-serif;
+  --ff-section-title: 'Permanent Marker', 'Poppins', sans-serif;
 
   /* --- Font Weight --- */
   --fw-light: 300;
@@ -107,7 +106,7 @@ html {
 }
 
 body {
-  background: var(--clr-light);
+  background: var(--clr-light-grey);
   color: var(--clr-dark);
   margin: 0;
   font-family: var(--ff-primary);
@@ -156,7 +155,7 @@ p {
 
 ul {
   font-size: var(--fs-body);
-  margin: 0 3rem;
+  margin: 0 0 0 2.4rem;
   line-height: 1.6;
 }
 
@@ -181,11 +180,6 @@ strong {
 /* -------------------------------------------------------------------------- */
 /*                                  Utilities                                 */
 /* -------------------------------------------------------------------------- */
-.page-wrapper {
-  position: relative;
-  top: var(--header-height);
-}
-
 .highlight-text {
   color: var(--clr-primary);
 }
@@ -448,8 +442,12 @@ header,
 /* -------------------------------------------------------------------------- */
 .intro {
   position: relative;
-  min-height: calc(100vh - var(--header-height));
-  padding-top: 6rem;
+
+  /* .intro extends behind header 
+    --> this ensures that the background is visible when header is hidden on scroll */
+  min-height: 100vh;
+  padding-top: calc(var(--header-height) + 6rem);
+
   color: var(--clr-light);
 
   background-color: var(--clr-light-grey);
@@ -525,6 +523,7 @@ header,
     justify-content: center;
     align-content: center;
     margin: 0 auto;
+    /* padding-top: calc(var(--header-height) + 6rem); */
   }
 
   .intro__img {
@@ -630,9 +629,17 @@ header,
 /* REVIEW - paragraphs and ul's */
 .accordion p:not(:last-child),
 .accordion ul:not(:last-child),
+/* .accordion li:not(:last-child), */
 /* .my-work p:not(:last-child), */
 .my-work ul:not(:last-child) {
   margin-bottom: 1.4rem;
+}
+
+.accordion ul {
+  max-width: 50ch;
+}
+.accordion li:not(:last-child) {
+  margin-bottom: 0.7rem;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -819,6 +826,7 @@ header,
   color: var(--clr-light);
   margin-bottom: 2.5rem;
   font-family: var(--ff-secondary);
+  font-weight: var(--fw-semi);
   letter-spacing: 0.2rem;
   font-size: var(--fs-h3);
   text-align: center;
@@ -1071,7 +1079,7 @@ header,
 
   transform: scaleX(0);
   transform-origin: right;
-  transition: transform 0.3s ease;
+  transition: transform 0.5s ease;
 }
 
 .footer__link--mailto:hover .email:after {
