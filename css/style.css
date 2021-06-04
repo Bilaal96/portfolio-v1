@@ -85,6 +85,7 @@
   --fw-medium: 500;
   --fw-semi: 600;
   --fw-bold: 700;
+  --fw-black: 900;
 }
 
 /* --- Laptop + --- */
@@ -317,10 +318,13 @@ header,
 
 /* ---------------------------------- Logo ---------------------------------- */
 .logo {
+  font-size: clamp(2.1rem, 2vw, 3.2rem);
+  font-weight: var(--fw-light);
   z-index: 1; /* visible when .nav is open */
+  transition: all 0.15s;
 }
-.logo .name {
-  font-weight: var(--fw-bold);
+.logo .initials {
+  font-weight: var(--fw-black);
   color: var(--clr-primary);
 }
 .logo:hover {
@@ -512,7 +516,7 @@ header,
 }
 
 /* --- tablet + --- */
-@media (min-width: 650px) {
+@media (min-width: 680px) {
   .intro {
     display: grid;
     grid-template-columns: min-content max-content;
@@ -523,7 +527,6 @@ header,
     justify-content: center;
     align-content: center;
     margin: 0 auto;
-    /* padding-top: calc(var(--header-height) + 6rem); */
   }
 
   .intro__img {
@@ -543,22 +546,32 @@ header,
   }
 
   .section__subtitle--intro {
+    --offset: 3rem;
+    --text-padding-left: 3.5rem;
+
     font-size: var(--fs-h3);
     grid-area: subtitle-cta;
     align-self: flex-start;
     grid-column: 1 / -1;
     grid-row: 2;
-    text-align: right;
+    text-align: left;
     position: relative;
-    left: -5rem;
-    width: calc(100% + 5rem);
+
+    left: calc(var(--offset) * -1); /* offset/overflow container from left */
+
+    width: calc(
+      100% + var(--offset) + var(--offset)
+    ); /* Add offset to width for left and right */
+
     /* Ensures text does not go behind picture */
-    padding-left: calc(var(--portfolio-img) + 3.5rem);
+    padding-left: calc(
+      var(--portfolio-img) + var(--offset) + var(--text-padding-left)
+    );
   }
 
   .intro__cta {
     grid-area: subtitle-cta;
-    position: absolute;
+    position: absolute; /* relative to grid-item area */
     bottom: 0.6rem;
     left: 0;
     font-weight: var(--fw-bold);
@@ -572,12 +585,16 @@ header,
     padding-left: 1.5rem;
   }
   .section__subtitle--intro {
-    padding-left: calc(var(--portfolio-img) + 5rem);
+    --offset: 4rem;
+    --text-padding-left: 5rem;
+
+    /* padding-left: calc(var(--portfolio-img) + var(--offset) + 4rem); */
+    /* padding-left: calc(var(--portfolio-img) + 5rem + 4rem); */
   }
 
   .intro__cta {
     margin-left: 1.5rem;
-    bottom: -3rem;
+    bottom: -2rem;
   }
 }
 /* -------------------------------------------------------------------------- */
