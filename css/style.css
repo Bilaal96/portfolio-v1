@@ -104,6 +104,29 @@
 /* -------------------------------------------------------------------------- */
 html {
   scroll-behavior: smooth;
+  /* Firefox  Scrollbar Styles */
+  scrollbar-color: var(--clr-secondary) var(--clr-light-grey);
+  scrollbar-width: thin;
+}
+
+/* Browser Window Scrollbar Styles */
+::-webkit-scrollbar {
+  background: var(--clr-dark);
+  width: 1.2rem;
+
+  /* Alternative BG */
+  /* background: var(--clr-light-grey); */
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--clr-secondary);
+  border-radius: 1rem;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3c72a8;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #5387bd;
 }
 
 body {
@@ -187,6 +210,20 @@ strong {
 
 .prevent-scroll {
   overflow: hidden;
+}
+
+/* Scrollbar Styles */
+.scrollbar {
+  /* Firefox only*/
+  scrollbar-color: var(--clr-dark) var(--clr-light);
+  scrollbar-width: auto;
+}
+.scrollbar::-webkit-scrollbar {
+  background: #ced4d8;
+  width: 1.2rem;
+}
+.scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
 }
 
 /* For use with "position: fixed" header - Offsets destination of anchor-link */
@@ -911,12 +948,16 @@ header,
 .project__summary {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   height: 60%;
   padding: 2rem;
 }
+
 .project__summary p:not(:last-child) {
   margin-bottom: 1.6rem;
+}
+
+.project__summary ul li::marker {
+  color: var(--clr-secondary);
 }
 
 /* ------------------------------ Project Links ----------------------------- */
@@ -979,29 +1020,28 @@ header,
     border: 0;
   }
 
+  .project__summary {
+    overflow: auto;
+  }
+
+  /**
+   * Center children of .project-summary 
+   * https://stackoverflow.com/questions/12415661/using-marginauto-to-vertically-align-a-div/26079837#26079837
+
+   * NOTE: justify-content causes loss of vertical padding in .project__summary
+   */
+  .project__summary > * {
+    margin: auto 0;
+  }
+
+  .project__summary ul {
+    margin-left: 3rem;
+  }
+
   .project__link {
     padding: 0;
   }
 }
-
-/* --- Large Mobile + --- */
-/* @media (min-width: 400px) {
-  .project__links-container {
-    display: flex;
-    justify-content: center;
-    gap: 1em;
-  }
-
-  .project__link {
-    display: inline-block;
-    padding: 1em 2.5em;
-    font-weight: var(--fw-bold);
-  }
-
-  .project__link + .project__link {
-    margin-top: 0;
-  }
-} */
 
 /* ---------------------- Project Card - Border Radius' --------------------- */
 .project {
