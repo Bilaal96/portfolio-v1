@@ -886,7 +886,6 @@ header,
   height: max-content;
   background-color: var(--clr-light);
   border-top: 3px solid var(--clr-primary);
-  /* padding: var(--p-2); */
 }
 
 .project__toolbox {
@@ -915,7 +914,6 @@ header,
   justify-content: space-evenly;
   height: 60%;
   padding: 2rem;
-  border-bottom: 1px solid black;
 }
 .project__summary p:not(:last-child) {
   margin-bottom: 1.6rem;
@@ -943,6 +941,7 @@ header,
   /* outline-offset: -6px; */
   transition: 0.15s;
   color: var(--clr-light);
+  border-radius: 0;
 }
 
 .project__link:visited {
@@ -975,7 +974,9 @@ header,
   .project__info {
     width: 50%;
     height: 100%;
-    border: unset;
+
+    min-height: max-content;
+    border: 0;
   }
 
   .project__link {
@@ -1036,6 +1037,10 @@ header,
     /* Reset border-radius */
     border-radius: 0;
     border-bottom-right-radius: 20px;
+  }
+
+  .project,
+  .project__info {
     border-top-right-radius: 6px;
   }
 
