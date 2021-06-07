@@ -1,3 +1,9 @@
+// Inject current year into copyright footnote on DOM Load
+window.addEventListener('DOMContentLoaded', (e) => {
+  const currentYear = new Date().getFullYear();
+  document.querySelector('.footer__year').innerHTML = `&copy; ${currentYear}`;
+});
+
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks = document.querySelectorAll('.nav__link');
 const accordionButtons = document.querySelectorAll('.accordion__button');

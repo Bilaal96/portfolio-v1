@@ -682,10 +682,10 @@ header,
 
 /* REVIEW - paragraphs and ul's */
 .accordion p:not(:last-child),
-.accordion ul:not(:last-child),
+.accordion ul:not(:last-child)
 /* .accordion li:not(:last-child), */
 /* .my-work p:not(:last-child), */
-.my-work ul:not(:last-child) {
+/* .my-work ul:not(:last-child) { */ {
   margin-bottom: 1.4rem;
 }
 
@@ -694,6 +694,33 @@ header,
 }
 .accordion li:not(:last-child) {
   margin-bottom: 0.7rem;
+}
+
+.get-in-touch {
+  position: relative;
+  color: #5387bd;
+  transition: color 0.3s;
+}
+.get-in-touch:hover {
+  color: var(--clr-light);
+}
+.get-in-touch::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 0;
+  border-bottom: 2px solid var(--clr-light);
+
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s ease;
+}
+
+.get-in-touch:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -952,6 +979,7 @@ header,
   padding: 2rem;
 }
 
+/* REVIEW - needed? Below, margin is applied to all direct children */
 .project__summary p:not(:last-child) {
   margin-bottom: 1.6rem;
 }
@@ -1097,7 +1125,8 @@ header,
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  gap: 5rem;
+  justify-content: center;
   background-color: var(--clr-black);
   color: var(--clr-light);
   font-size: clamp(1.8rem, 2vw, 2.1rem);
@@ -1156,7 +1185,7 @@ header,
   gap: 6rem;
   font-size: 3rem;
   padding: 0;
-  margin: 6rem 0 0;
+  margin: 0;
 }
 
 .social-list__link {
@@ -1170,4 +1199,8 @@ header,
 
 .social-list__link:hover {
   opacity: 0.6;
+}
+
+.footer__copyright {
+  color: var(--clr-light);
 }
