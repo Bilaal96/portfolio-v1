@@ -67,14 +67,13 @@ const toggleAccordionContent = (e) => {
       button.classList.remove(activeClassName);
     });
 
-  // FIXME - Scroll to top of ACTIVE accordionButton
-  // --- https://stackoverflow.com/questions/49820013/javascript-scrollintoview-smooth-scroll-and-offset
-  // --- see comments too
-  //   --- could do check to see if accordion is fully close, then scroll to center with toggledButton.scrollIntoView({ block: 'center' });
+  // Scroll to top of ACTIVE accordionButton
+  // -- Reference: https://stackoverflow.com/questions/49820013/javascript-scrollintoview-smooth-scroll-and-offset
   if (window.matchMedia('(max-width: 768px)').matches) {
-    // offset scroll position, taking header with "position: fixed" into account
-    //   const offset = "70px";
-    const offset = document.querySelector('header').scrollHeight + 20;
+    // Calculate amount to offset from from scroll position
+    const offsetFromHeader = 20;
+    const offset =
+      document.querySelector('header').scrollHeight + offsetFromHeader;
 
     const bodyRect = document.body.getBoundingClientRect();
     const toggledButtonRect = toggledButton.getBoundingClientRect();
@@ -88,8 +87,8 @@ const toggleAccordionContent = (e) => {
     });
   }
 
-  // --- https://stackoverflow.com/questions/24665602/scrollintoview-scrolls-just-too-far
   // REVIEW - cannot offset this with position:fixed header
+  // -- reference: https://stackoverflow.com/questions/24665602/scrollintoview-scrolls-just-too-far
   //toggledButton.scrollIntoView();
   //toggledButton.scrollIntoView({ block: 'center' });
 };

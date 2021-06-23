@@ -839,10 +839,12 @@ header,
 }
 
 .section__subtitle--work {
+  max-width: 45ch;
+  margin: 0 auto;
+  margin-bottom: 4rem;
   color: var(--clr-secondary);
   font-weight: var(--fw-bold);
   text-align: center;
-  margin-bottom: 4rem;
   line-height: 1.4;
 }
 
