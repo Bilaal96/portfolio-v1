@@ -210,12 +210,70 @@
     <section class="my-work">
         <a class="anchor-down" id="work" name="work">&nbsp;</a>
         <h2 class="section__title section__title--work">My Work</h2>
-        <p class="section__subtitle section__subtitle--work">Here's what I've been working on! For extensive information
-            on a project, please click "More Details"
-            &nbsp; :)</p>
+        <p class="section__subtitle section__subtitle--work">Here's what I've been working on! My most recent project is
+            listed first 😃</p>
 
         <!-- Portfolio -->
         <div class="portfolio">
+            <!-- Project #2 -->
+            <div class="project">
+                <!-- Image -->
+                <div class="project__identity">
+                    <h3 class="project__name">Book Worm</h3>
+                    <img src="assets/book-worm.PNG" class="project__img" alt="Screenshot of Book Worm's homepage">
+                </div>
+
+                <!-- Info -->
+                <div class="project__info">
+                    <div class="project__toolbox">
+                        <img src="./assets/icons/material-ui-dark.svg" class="tool-icon tool-icon--mt"
+                            alt="Firebase Logo">
+
+                        <i class="fab fa-node-js tool-icon"></i>
+
+                        <img src="./assets/icons/mongodb.svg" class="tool-icon" alt="Firebase Logo">
+                    </div>
+
+                    <div class="project__summary scrollbar">
+                        <p>A MERN Stack Book Tracking application with CRUD functionality. The UI has been
+                            developed using Material UI (v4).</p>
+
+                        <p><strong>Features include:</strong></p>
+                        <ul>
+                            <li>Cross-origin requests - query and display data from the Google Books API in various ways
+                            </li>
+                            <li>User authentication and authorization with bcrypt and JWT-Cookies, respectively</li>
+                            <li>
+                                Registered users can:
+                                <ul>
+                                    <li>create and name their own booklists</li>
+                                    <li>add books to & delete books from a booklist</li>
+                                    <li>update details of a booklist or delete the list and its contents</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <p>Due to free web hosting <strong>it may take a minute to load</strong> - thanks for
+                            your patience! 😁</p>
+                    </div>
+
+                    <div class="project__links-container">
+                        <a class="project__link project__link--readme"
+                            href="https://github.com/Bilaal96/book-worm/blob/main/README.md" target="_blank"
+                            rel="noreferrer">
+                            <i class="fas fa-info-circle"></i> More Details
+                        </a>
+                        <a class="project__link project__link--demo" href="https://book-worm-live.herokuapp.com/"
+                            target="_blank" rel="noreferrer">
+                            <i class="fas fa-external-link-square-alt"></i> Demo
+                        </a>
+                        <a class="project__link project__link--code" href="https://github.com/Bilaal96/book-worm"
+                            target="_blank" rel="noreferrer">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                    </div>
+                </div>
+            </div>
 
             <!-- Project #1 -->
             <div class="project">
@@ -240,18 +298,18 @@
                         <p>A fictional <strong>e-commerce</strong> clothing store made with React, Redux, Styled
                             Components, Firebase & Node.js.</p>
 
-                        <p>
-                            <strong>Features include:</strong> 
+                        <p><strong>Features include:</strong></p>
                         <ul>
-                            <li>user authentication & sessions (via Firebase SDK)</li>
-                            <li>custom shopping cart & checkout system (with data
+                            <li>User authentication & sessions (via Firebase SDK)</li>
+                            <li>Custom shopping cart & checkout system (with data
                                 persisted to Redux Store)</li>
                             <li>Stripe integration for handling payments</li>
-                            <li>App data was stored in and fetched from Firestore - Firebase's real-time database</li>
+                            <li>App data was stored in and fetched from Firestore - Firebase's real-time database
+                            </li>
                         </ul>
-                        </p>
-                        <p>Due to free web hosting, <strong>please give the demo a minute to load</strong> - thanks for
-                            your patience! :)</p>
+
+                        <p>Due to free web hosting <strong>it may take a minute to load</strong> - thanks for
+                            your patience! 😁</p>
                     </div>
 
                     <div class="project__links-container">
@@ -272,7 +330,7 @@
                 </div>
             </div>
 
-            <!-- Project #2 -->
+            <!-- Project #3 -->
             <!-- <div class="project">
                 <div class="project__identity">
                     <h3 class="project__name">Novaflora</h3>
@@ -287,7 +345,7 @@
                         <i class="fab fa-js tool-icon"></i>                        
                     </div>
 
-                    <div class="project__summary">
+                    <div class="project__summary scrollbar">
                         <p>A landing page for a fictional Florist company. Made with HTML, SASS, JS</p>
                     </div>
 
