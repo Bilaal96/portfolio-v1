@@ -113,9 +113,6 @@ html {
 ::-webkit-scrollbar {
   background: var(--clr-dark);
   width: 1.2rem;
-
-  /* Alternative BG */
-  /* background: var(--clr-light-grey); */
 }
 
 ::-webkit-scrollbar-thumb {
@@ -159,7 +156,6 @@ h1,
 h2,
 h3 {
   line-height: 1;
-  /* margin-bottom: var(--m-2); */
 }
 
 h1 {
@@ -195,10 +191,6 @@ strong {
 :focus {
   outline: 3px solid var(--clr-primary);
   outline-offset: 3px;
-  /* Alt style */
-  /* outline: 0;
-  box-shadow: 0 0 0 3px var(--clr-primary);
-  border-radius: 20px; */
 }
 
 /* -------------------------------------------------------------------------- */
@@ -259,7 +251,7 @@ strong {
   font-size: var(--fs-h3);
 }
 
-/* ----- Scroll Link (Arrow) ----- */
+/* ----- Scroll Link (Chevron / Arrow) ----- */
 .section__scroll-link {
   position: absolute;
   bottom: 3rem;
@@ -634,13 +626,12 @@ header,
     bottom: -2rem;
   }
 }
+
 /* -------------------------------------------------------------------------- */
 /*                              About Me Section                              */
 /* -------------------------------------------------------------------------- */
 .about-me {
   position: relative;
-  /* min-height: calc(100vh - var(--header-height)); */
-
   background-color: var(--clr-dark);
   background-image: url('https://images.unsplash.com/photo-1585076641399-5c06d1b3365f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');
   background-size: cover;
@@ -670,28 +661,21 @@ header,
   border-radius: 2px;
 }
 
-/* .about-me__body {} */
-
-/* .about-me__detail > h3 {
-  color: var(--clr-primary);
-} */
-
+/* Style bullet points */
 .about-me__body ul li::marker {
   color: var(--clr-primary);
 }
 
-/* REVIEW - paragraphs and ul's */
+.accordion ul {
+  /* Forces ul li to wrap early */
+  max-width: 50ch;
+}
+
 .accordion p:not(:last-child),
-.accordion ul:not(:last-child)
-/* .accordion li:not(:last-child), */
-/* .my-work p:not(:last-child), */
-/* .my-work ul:not(:last-child) { */ {
+.accordion ul:not(:last-child) {
   margin-bottom: 1.4rem;
 }
 
-.accordion ul {
-  max-width: 50ch;
-}
 .accordion li:not(:last-child) {
   margin-bottom: 0.7rem;
 }
@@ -744,7 +728,7 @@ header,
   width: 100%;
   padding: 1.2rem 1.2rem 1.2rem 6.5rem;
 
-  background: transparent;
+  background: transparent; /* fallback */
   background: rgba(0, 0, 0, 0.4);
   color: var(--clr-light);
   font-family: var(--ff-primary);
@@ -754,7 +738,8 @@ header,
   text-transform: uppercase;
   letter-spacing: 0.3rem;
 
-  border: none;
+  border: 0;
+  border-bottom: 1px solid white;
   outline: none;
   /* Alternative to custom focus: */
   /* outline-offset: -8px; */
@@ -763,7 +748,7 @@ header,
   transition: border-radius 0.2s ease-out, background 0.2s ease-out;
 }
 
-/* Border-top on all accordion buttons except 1st child */
+/* Border-top on all accordion buttons except FIRST child */
 .accordion__button:not(:first-child) {
   border-top: 1px solid white;
 }
@@ -782,15 +767,14 @@ header,
 }
 
 /* ----- Button Interaction States ----- */
-.accordion__button--active {
+.accordion__button.is-active {
   background: rgba(56, 104, 154, 0.25);
   border-bottom: 2px dotted white;
   border-bottom-right-radius: 20px;
 }
-.accordion__button--active.accordion__button::before {
-  border-left-color: var(--clr-primary);
 
-  /* border-left-color: var(--clr-light); */
+.accordion__button.is-active.accordion__button::before {
+  border-left-color: var(--clr-primary);
   transform: translateY(-50%) rotate(90deg);
 }
 
@@ -802,24 +786,17 @@ header,
   background: rgba(56, 104, 154, 0.35);
 }
 
-/* ---------------------------- Accordion Content --------------------------- */
+/* ------------------------ Accordion Body & Content ------------------------ */
 .accordion__content {
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 1.8rem;
+
+  /* Required for animating open/close */
+  /* Padding top & bottom are added dynamically with JS */
+  padding: 0 var(--p-3);
   max-height: 0;
   overflow: hidden;
-  font-size: 1.8rem;
-}
-
-/* ----- Content Interaction States ----- */
-.accordion__button--active + .accordion__content {
-  /* Active - content */
-  padding: var(--p-2) var(--p-3);
-  max-height: max-content;
-  border-bottom: 1px solid var(--clr-light);
-  background: rgba(0, 0, 0, 0.5);
-}
-
-.accordion__button--active + .accordion__content:last-child {
-  border-bottom: none;
+  transition: max-height 0.3s ease, padding 0.3s ease;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -924,12 +901,6 @@ header,
   object-position: center; /* like background-position */
 }
 
-/* REVIEW - img border necessary? */
-.project__img--border-light {
-  /* Creates good contrast between project__identity & project__img */
-  border: 1px solid var(--clr-light-grey);
-}
-
 /* --- Laptop + --- */
 @media (min-width: 800px) {
   .project__identity {
@@ -963,9 +934,6 @@ header,
   border-bottom: 4px dotted var(--clr-primary);
 }
 
-.tool-img {
-}
-
 .tool-icon {
   font-size: 5rem;
   width: 50px;
@@ -996,8 +964,6 @@ header,
   height: 20%;
   display: grid;
   gap: 0.2rem;
-  /* justify-items: center;
-  align-items: center; */
   grid-template-columns: repeat(2, 1fr);
 }
 
@@ -1010,7 +976,6 @@ header,
   width: 100%;
   height: 100%;
   outline: none;
-  /* outline-offset: -6px; */
   transition: 0.15s;
   color: var(--clr-light);
   border-radius: 0;
@@ -1033,7 +998,6 @@ header,
 }
 
 .project__link--demo {
-  /* background: rgba(0, 0, 0, 0.5); */
   background: var(--clr-secondary);
 }
 

@@ -1,18 +1,24 @@
+// ---------- Global Variables ----------
+// Query selectors
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelectorAll('.nav__link');
+const accordionButtons = document.querySelectorAll('.accordion__button');
+
+// Tracks previous scroll position - its value is set by hideHeaderOnScrollDown()
+let prevScrollPos = window.pageYOffset;
+
+// ---------- Get copyright date ----------
 // Inject current year into copyright footnote on DOM Load
 window.addEventListener('DOMContentLoaded', (e) => {
   const currentYear = new Date().getFullYear();
   document.querySelector('.footer__year').innerHTML = `&copy; ${currentYear}`;
 });
 
-const navToggle = document.querySelector('.nav-toggle');
-const navLinks = document.querySelectorAll('.nav__link');
-const accordionButtons = document.querySelectorAll('.accordion__button');
+// ---------- Hide header on scroll down ----------
+window.addEventListener('scroll', hideHeaderOnScrollDown);
 
-// Tracks previous scroll position - value is set by hideHeader()
-let prevScrollPos = window.pageYOffset;
-
-// Event handlers
-const hideHeaderOnScrollDown = () => {
+// Hide Header on scroll down, show on scroll up
+function hideHeaderOnScrollDown() {
   const currentScrollPos = window.pageYOffset;
   const header = document.querySelector('header');
 
@@ -28,80 +34,111 @@ const hideHeaderOnScrollDown = () => {
   }
 
   prevScrollPos = currentScrollPos;
-};
+}
 
-const toggleNav = () =>
-  ['nav-open', 'prevent-scroll'].forEach((htmlClass) =>
-    document.body.classList.toggle(htmlClass)
-  );
-
-const closeNav = () =>
-  ['nav-open', 'prevent-scroll'].forEach((htmlClass) =>
-    document.body.classList.remove(htmlClass)
-  );
-
-/** __ Accordion __
- * When "accordionButton" is clicked:
- * Show immediate-sibling "accordionContent" --> set maxHeight to "max-content"
- * hide non-immediate-sibling "accordionContent" --> set maxHeight to 0
- */
-
-const toggleAccordionContent = (e) => {
-  // Get accordion button that was clicked
-  const toggledButton = e.target;
-  const activeClassName = 'accordion__button--active';
-
-  // Clear outline on click (remains visible on tab)
-  toggledButton.blur();
-
-  // Set styles for content related to toggledButton; via toggling HTML class
-  // -- without class: hide content (default)
-  // -- with class: show content
-  toggledButton.classList.toggle(activeClassName);
-
-  // Remove active class from non-toggled accordionButtons
-  // -- ensures content is only shown relative to toggledButton
-  [...accordionButtons]
-    .filter((button) => button !== toggledButton)
-    .forEach((button) => {
-      button.classList.remove(activeClassName);
-    });
-
-  // Scroll to top of ACTIVE accordionButton
-  // -- Reference: https://stackoverflow.com/questions/49820013/javascript-scrollintoview-smooth-scroll-and-offset
-  if (window.matchMedia('(max-width: 768px)').matches) {
-    // Calculate amount to offset from from scroll position
-    const offsetFromHeader = 20;
-    const offset =
-      document.querySelector('header').scrollHeight + offsetFromHeader;
-
-    const bodyRect = document.body.getBoundingClientRect();
-    const toggledButtonRect = toggledButton.getBoundingClientRect();
-    //   console.log({ left: toggledButtonRect.left, top: toggledButtonRect.top });
-    const scrollPosition = toggledButtonRect.top - bodyRect.top - offset;
-
-    window.scrollTo({
-      top: scrollPosition,
-      left: 0,
-      behavior: 'smooth',
-    });
-  }
-
-  // REVIEW - cannot offset this with position:fixed header
-  // -- reference: https://stackoverflow.com/questions/24665602/scrollintoview-scrolls-just-too-far
-  //toggledButton.scrollIntoView();
-  //toggledButton.scrollIntoView({ block: 'center' });
-};
-
-// Event Listeners
-// -- Hide Header on scroll down, show on scroll up
-window.addEventListener('scroll', hideHeaderOnScrollDown);
-
-// -- Responsive side nav
+// ---------- Responsive side nav ----------
 navToggle.addEventListener('click', toggleNav);
 navLinks.forEach((link) => link.addEventListener('click', closeNav));
 
-// -- Toggle Accordion on tab click
-accordionButtons.forEach((button) =>
-  button.addEventListener('click', toggleAccordionContent)
-);
+function toggleNav() {
+  ['nav-open', 'prevent-scroll'].forEach((htmlClass) =>
+    document.body.classList.toggle(htmlClass)
+  );
+}
+
+function closeNav() {
+  ['nav-open', 'prevent-scroll'].forEach((htmlClass) =>
+    document.body.classList.remove(htmlClass)
+  );
+}
+
+/**
+ * ---------- Accordion ----------
+ * ----- Click Behaviour -----
+ * Toggles accordionButton "is-active" class
+ * Reveals/hides accordionContent, by programmatically setting maxHeight & padding
+    - setting this with JS allows us to animate the revealing of accordionContent
+ * Closes any sibling accordion that was previously open 
+ */
+
+// Add click event listener to each accordion button
+for (accordionButton of accordionButtons) {
+  accordionButton.addEventListener('click', handleAccordionButtonClick);
+}
+
+// accordionButton click handler
+function handleAccordionButtonClick(e) {
+  const accordionButton = e.target;
+  toggleAccordion(accordionButton); // toggle clicked accordion
+  closeAccordionSiblings(accordionButton); // close previously opened accordion
+
+  // Wait for accordion open/close animations to end, then scroll to top of toggled accordion
+  const accordionAnimationDuration = 200;
+  setTimeout(
+    () => scrollToElement(accordionButton, 7),
+    accordionAnimationDuration
+  );
+}
+
+// Close all accordions except the one that was clicked
+function closeAccordionSiblings(clickedButton) {
+  [...accordionButtons]
+    // Filter out siblings of clickedButton
+    .filter((accordionButton) => accordionButton !== clickedButton)
+    // Close siblings of clickedButton
+    .forEach((siblingButton) => {
+      siblingButton.classList.remove('is-active');
+      const siblingContent = siblingButton.nextElementSibling;
+      closeAccordionContent(siblingContent);
+    });
+}
+
+// Programmatically animate accordionContent on accordion close
+function closeAccordionContent(accordionContent) {
+  accordionContent.style.maxHeight = null;
+  accordionContent.style.padding = null;
+}
+
+// Open/close a single accordion
+function toggleAccordion(accordionButton) {
+  // Toggle accordionButton styles
+  accordionButton.blur(); // clear focus state
+  accordionButton.classList.toggle('is-active');
+
+  const accordionContent = accordionButton.nextElementSibling;
+
+  // Programmatically animate open/close of accordionContent
+  if (accordionContent.style.maxHeight) {
+    closeAccordionContent(accordionContent);
+  } else {
+    // Open accordion content
+    accordionContent.style.maxHeight =
+      accordionContent.scrollHeight + 40 + 'px'; // 2rem * 2 = 40px
+    accordionContent.style.padding = '2rem 3rem';
+  }
+}
+
+// ---------- Utils ----------
+// Scroll to top of element & offset from the header (i.e. navigation bar)
+// -- REF: https://stackoverflow.com/questions/49820013/javascript-scrollintoview-smooth-scroll-and-offset
+function scrollToElement(element, offsetMultiplier = 2) {
+  // Calculate amount to offset scroll position from header
+  const headerHeight = document.querySelector('header').scrollHeight;
+  const offset = 10 * offsetMultiplier; // default: 20
+  const offsetFromHeader = headerHeight + offset;
+
+  // Calculate scroll position (inclusive of offsetFromHeader)
+  // getBoundingClientRect() gives us access to element size and position in the DOM
+  // -- REF: https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect
+  const bodyRect = document.body.getBoundingClientRect();
+  const elementRect = element.getBoundingClientRect();
+  const scrollPosition = elementRect.top - bodyRect.top - offsetFromHeader;
+  // console.log({ bodyTop: bodyRect.top, elementTop: elementRect.top, offsetFromHeader });
+
+  // Scroll to calculated position
+  window.scrollTo({
+    top: scrollPosition,
+    left: 0,
+    behavior: 'smooth',
+  });
+}
