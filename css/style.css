@@ -238,6 +238,50 @@ strong {
   top: calc(var(--header-height) * -1); /* Offset value */
 }
 
+/* Inline text link */
+.inline-link {
+  position: relative;
+  transition: color 0.3s;
+}
+.inline-link,
+.inline-link:visited {
+  color: var(--clr-primary);
+}
+.inline-link:visited {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+/* Underline with pseudo-element */
+.inline-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 0;
+  border-bottom: 2px solid var(--clr-primary);
+
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s ease;
+}
+/* Hover styles - Animate underline */
+.inline-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+/* Inline-link variant: light - contrasts well with dark background */
+.inline-link__light,
+.inline-link__light:visited {
+  color: #5387bd;
+}
+.inline-link__light:hover {
+  color: var(--clr-light);
+}
+.inline-link__light::after {
+  border-bottom: 2px solid var(--clr-light);
+}
+
 /* -------------------------------------------------------------------------- */
 /*                              Section Elements                              */
 /* -------------------------------------------------------------------------- */
@@ -680,33 +724,6 @@ header,
   margin-bottom: 0.7rem;
 }
 
-.get-in-touch {
-  position: relative;
-  color: #5387bd;
-  transition: color 0.3s;
-}
-.get-in-touch:hover {
-  color: var(--clr-light);
-}
-.get-in-touch::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -2px;
-  height: 0;
-  border-bottom: 2px solid var(--clr-light);
-
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.5s ease;
-}
-
-.get-in-touch:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
-}
-
 /* -------------------------------------------------------------------------- */
 /*                                  Accordion                                 */
 /* -------------------------------------------------------------------------- */
@@ -890,6 +907,7 @@ header,
   letter-spacing: 0.2rem;
   font-size: var(--fs-h3);
   text-align: center;
+  line-height: 1.4;
 }
 
 .project__img {
