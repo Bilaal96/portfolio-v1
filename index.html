@@ -313,6 +313,129 @@
 
       <!-- Portfolio -->
       <div class="portfolio">
+        <!-- Project #4 -->
+        <div class="project">
+          <!-- Image -->
+          <div class="project__identity">
+            <h3 class="project__name">Free Roam</h3>
+            <img
+              src="assets/freeroam.png"
+              class="project__img"
+              alt="Screenshot of Free Roam project"
+            />
+          </div>
+
+          <!-- Info -->
+          <div class="project__info">
+            <div class="project__toolbox">
+              <!-- Next.js -->
+              <img
+                src="./assets/icons/next-js.svg"
+                class="tool-icon"
+                alt="Next.js Logo"
+              />
+
+              <!-- SASS -->
+              <i class="fab fa-brands fa-sass tool-icon"></i>
+
+              <!-- Strapi -->
+              <img
+                src="./assets/icons/strapi.svg"
+                class="tool-icon"
+                alt="Strapi Logo"
+              />
+            </div>
+
+            <div class="project__summary scrollbar">
+              <p>
+                A Travel Agency themed blog; built with Next.js, SCSS &
+                <a class="inline-link" href="https://strapi.io/" target="_blank"
+                  >Strapi</a
+                >. GraphQL is used to query the Strapi CMS for data.
+              </p>
+
+              <p><strong>Features include:</strong></p>
+
+              <ul>
+                <li>
+                  Custom content-types built with Strapi - makes it easy to
+                  create & manage Holiday Packages, Blog Articles & About page
+                  with minimal coding knowledge.
+                </li>
+                <li>Pagination of Blog Articles</li>
+                <li>
+                  Rendering strategies used:
+                  <ul>
+                    <li>
+                      <a
+                        class="inline-link"
+                        href="https://nextjs.org/docs/basic-features/data-fetching/client-side#client-side-data-fetching-with-swr"
+                        target="_blank"
+                        >SWR library</a
+                      >
+                      for client-side data fetching & caching
+                    </li>
+                    <li>
+                      <a
+                        class="inline-link"
+                        href="https://nextjs.org/docs/basic-features/pages#static-generation-with-data"
+                        target="_blank"
+                        >Static Site Generation</a
+                      >
+                      - improves load times by pre-rendering HTML with data
+                    </li>
+                    <li>
+                      <a
+                        class="inline-link"
+                        href="https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration"
+                        target="_blank"
+                        >Incremental Static Regeneration</a
+                      >
+                      - revalidates cached static data, ensuring updates to data
+                      on Strapi server are synced with the view on refresh
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+
+              <p>
+                The Strapi server is hosted with Heroku, so the
+                <strong
+                  >initial load of paginated articles may take a minute
+                </strong>
+                - thanks for your patience! 😁
+              </p>
+            </div>
+
+            <div class="project__links-container">
+              <a
+                class="project__link project__link--readme"
+                href="https://github.com/Bilaal96/travel-agency-nextjs/blob/master/README.md"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i class="fas fa-info-circle"></i> More Details
+              </a>
+              <a
+                class="project__link project__link--demo"
+                href="https://freeroam-travel.vercel.app/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i class="fas fa-external-link-square-alt"></i> Demo
+              </a>
+              <a
+                class="project__link project__link--code"
+                href="https://github.com/Bilaal96/travel-agency-nextjs"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i class="fab fa-github"></i> Code
+              </a>
+            </div>
+          </div>
+        </div>
+
         <!-- Project #3 -->
         <div class="project">
           <!-- Image -->
@@ -412,6 +535,7 @@
             </div>
           </div>
         </div>
+
         <!-- Project #2 -->
         <div class="project">
           <!-- Image -->
