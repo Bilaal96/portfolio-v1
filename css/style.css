@@ -196,8 +196,12 @@ strong {
 /* -------------------------------------------------------------------------- */
 /*                                  Utilities                                 */
 /* -------------------------------------------------------------------------- */
-.highlight-text {
+.highlight-primary {
   color: var(--clr-primary);
+}
+
+.highlight-secondary {
+  color: #5387bd;
 }
 
 .prevent-scroll {
