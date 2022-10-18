@@ -14,6 +14,15 @@ window.addEventListener('DOMContentLoaded', (e) => {
   document.querySelector('.footer__year').innerHTML = `&copy; ${currentYear}`;
 });
 
+// ---------- Window resize ----------
+window.addEventListener('resize', (e) => {
+  // --- responsive accordion height - resize active accordion on window resize ---
+  const activeAccordionButton = document.querySelector(
+    '.accordion__button.is-active'
+  );
+  if (activeAccordionButton) resizeActiveAccordion(activeAccordionButton);
+});
+
 // ---------- Hide header on scroll down ----------
 window.addEventListener('scroll', hideHeaderOnScrollDown);
 
@@ -73,10 +82,10 @@ function handleAccordionButtonClick(e) {
   closeAccordionSiblings(accordionButton); // close previously opened accordion
 
   // Wait for accordion open/close animations to end, then scroll to top of toggled accordion
-  const accordionAnimationDuration = 200;
+  const ACCORDION_ANIMATION_DURATION = 200;
   setTimeout(
     () => scrollToElement(accordionButton, 7),
-    accordionAnimationDuration
+    ACCORDION_ANIMATION_DURATION
   );
 }
 
@@ -91,6 +100,17 @@ function closeAccordionSiblings(clickedButton) {
       const siblingContent = siblingButton.nextElementSibling;
       closeAccordionContent(siblingContent);
     });
+}
+
+// Dynamically set accordion height using the height of its scrollable contents
+function setAccordionHeight(accordionContent) {
+  accordionContent.style.maxHeight = accordionContent.scrollHeight + 40 + 'px'; // 2rem * 2 = 40px
+}
+
+// Programmatically animate accordionContent on accordion open close
+function openAccordionContent(accordionContent) {
+  setAccordionHeight(accordionContent);
+  accordionContent.style.padding = '2rem 3rem';
 }
 
 // Programmatically animate accordionContent on accordion close
@@ -111,11 +131,18 @@ function toggleAccordion(accordionButton) {
   if (accordionContent.style.maxHeight) {
     closeAccordionContent(accordionContent);
   } else {
-    // Open accordion content
-    accordionContent.style.maxHeight =
-      accordionContent.scrollHeight + 40 + 'px'; // 2rem * 2 = 40px
-    accordionContent.style.padding = '2rem 3rem';
+    openAccordionContent(accordionContent);
   }
+}
+
+/**
+ * ----- Responsive Resize Behaviour -----
+ * Resets height of active accordion
+ * Called on window resize event to calculate new height for resized accordion
+ */
+function resizeActiveAccordion(activeAccordionButton) {
+  const activeAccordionContent = activeAccordionButton.nextElementSibling;
+  setAccordionHeight(activeAccordionContent);
 }
 
 // ---------- Utils ----------
