@@ -77,7 +77,8 @@
   /* --- Font Family --- */
   --ff-primary: 'Poppins', sans-serif;
   --ff-secondary: 'Source Code Pro', monospace;
-  --ff-section-title: 'Permanent Marker', 'Poppins', sans-serif;
+  --ff-section-title: 'Fascinate Inline', 'Permanent Marker', 'Poppins',
+    sans-serif;
 
   /* --- Font Weight --- */
   --fw-light: 300;
