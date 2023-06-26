@@ -63,7 +63,8 @@
 
   /* ----- Element-specific ----- */
   --header-height: 7rem;
-  --portfolio-img: 250px;
+  --portfolio-img-sm: 250px;
+  --portfolio-img: 300px;
 
   /* ----- Fonts on Mobile ----- */
   /* --- Font Size --- */
@@ -577,20 +578,32 @@ header,
 .intro__cta i {
   font-size: 1.8rem;
 }
-
-.intro__img {
-  width: 300px;
-  margin: 0 auto;
-  box-shadow: var(--bs);
-}
-
 .intro__cta:hover {
   background: rgba(0, 0, 0, 0.75);
 }
-
 .intro__cta:active {
   opacity: 0.9;
   background: var(--clr-secondary);
+}
+
+.intro__img-wrapper {
+  position: relative;
+  max-width: max-content;
+  margin: 0 auto;
+  border: 2px solid var(--clr-light-grey);
+  z-index: 100;
+}
+
+.intro__img-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+}
+
+.intro__img {
+  width: var(--portfolio-img);
+  box-shadow: var(--bs);
 }
 
 /* --- tablet + --- */
@@ -607,13 +620,15 @@ header,
     margin: 0 auto;
   }
 
-  .intro__img {
-    grid-area: img;
-    min-width: var(--portfolio-img);
-    position: relative;
+  .intro__img-wrapper {
+    /* positioned relative */
     top: 3rem;
-    z-index: 1;
+    grid-area: img;
     align-self: center;
+  }
+
+  .intro__img {
+    min-width: var(--portfolio-img-sm);
   }
 
   .section__title--intro {
