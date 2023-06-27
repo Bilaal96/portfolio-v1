@@ -639,7 +639,8 @@ header,
   }
 
   .section__subtitle--intro {
-    --offset: 3rem;
+    --container-offset: 3rem;
+    --text-offset: 6rem;
     --text-padding-left: 3.5rem;
 
     font-size: var(--fs-h3);
@@ -650,15 +651,15 @@ header,
     text-align: left;
     position: relative;
 
-    left: calc(var(--offset) * -1); /* offset/overflow container from left */
+    /* offset/overflow container from left */
+    left: calc(var(--text-offset) * -1);
 
-    width: calc(
-      100% + var(--offset) + var(--offset)
-    ); /* Add offset to width for left and right */
+    /* Add offset to width for left and right */
+    width: calc(100% + var(--container-offset) + var(--container-offset));
 
     /* Ensures text does not go behind picture */
     padding-left: calc(
-      var(--portfolio-img) + var(--offset) + var(--text-padding-left)
+      var(--portfolio-img) + var(--container-offset) + var(--text-padding-left)
     );
   }
 
@@ -678,7 +679,7 @@ header,
     padding-left: 1.5rem;
   }
   .section__subtitle--intro {
-    --offset: 4rem;
+    --container-offset: 4rem;
     --text-padding-left: 5rem;
 
     /* padding-left: calc(var(--portfolio-img) + var(--offset) + 4rem); */
